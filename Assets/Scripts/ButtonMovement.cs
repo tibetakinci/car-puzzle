@@ -10,8 +10,10 @@ public class ButtonMovement : MonoBehaviour
     private float targetYPosition = -0.6f;
     public float buttonAcceleration;
     private bool isPressed = false;
-    private bool isBottom = false;
     private bool isUp = true;
+
+    public GameObject fence;
+    private float fenceTargetYPosition = 5.1f;
 
 
     // Start is called before the first frame update
@@ -26,6 +28,7 @@ public class ButtonMovement : MonoBehaviour
         if(isPressed)
         {
             AnimateButton();
+            AnimateBarrier();
         }
     }
 
@@ -34,36 +37,38 @@ public class ButtonMovement : MonoBehaviour
         isPressed = true;
     }
 
+    void AnimateBarrier()
+    {
+        
+    }
 
-    void AnimateButton() 
+    void AnimateButton()
     {
         if(isPressed && isUp)
         {
-            PushDown();
+            ButtonPushDown();
         }
         if(transform.position.y <= targetYPosition)
         { 
-            isBottom = true;
             isUp = false;
         }
-        if(isPressed && isBottom) 
+        if(isPressed && !isUp) 
         {
-            PullUp();
+            ButtonPullUp();
         }
         if(transform.position.y >= startPosition.y)
         {
             isUp = true;
-            isBottom = false;
             isPressed = false;
         }
     }
 
-    void PushDown()
+    void ButtonPushDown()
     {
         transform.position -= transform.forward * buttonAcceleration * Time.deltaTime;
     }
 
-    void PullUp()
+    void ButtonPullUp()
     {
         transform.position += transform.forward * buttonAcceleration * Time.deltaTime;
     }
