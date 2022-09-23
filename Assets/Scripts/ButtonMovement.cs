@@ -6,36 +6,65 @@ using UnityEngine;
 
 public class ButtonMovement : MonoBehaviour
 {
-    private UnityEngine.Vector3 targetPosition;
     private UnityEngine.Vector3 startPosition;
-    private float targetYPosition = 2.2f;
+    private float targetYPosition = -0.6f;
     public float buttonAcceleration;
+    private bool isPressed = false;
+    private bool isBottom = false;
+    private bool isUp = true;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        startPosition = transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        if(isPressed)
+        {
+            AnimateButton();
+        }
     }
 
     void OnMouseDown()
     {
-        AnimateButton();
+        isPressed = true;
     }
 
 
     void AnimateButton() 
     {
-        UnityEngine.Debug.Log("it is working");
+        if(isPressed && isUp)
+        {
+            PushDown();
+        }
+        if(transform.position.y <= targetYPosition)
+        { 
+            isBottom = true;
+            isUp = false;
+        }
+        if(isPressed && isBottom) 
+        {
+            PullUp();
+        }
+        if(transform.position.y >= startPosition.y)
+        {
+            isUp = true;
+            isBottom = false;
+            isPressed = false;
+        }
+    }
 
+    void PushDown()
+    {
         transform.position -= transform.forward * buttonAcceleration * Time.deltaTime;
-       
-        UnityEngine.Debug.Log(transform.position);
+    }
+
+    void PullUp()
+    {
+        transform.position += transform.forward * buttonAcceleration * Time.deltaTime;
     }
 }
