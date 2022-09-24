@@ -13,12 +13,16 @@ public class ButtonMovement : MonoBehaviour
     private bool isUp = true;
 
     public GameObject barrier;
-    private float barrierTargetYPosition = 5.1f;
+    public float barrierSpeed = 1f;
+    private float barrierRotationAmount = -90f;
+    private UnityEngine.Vector3 startRotation;
+    private bool isOpen = false;
 
     // Start is called before the first frame update
     void Start()
     {
         startPosition = transform.position;
+        startRotation = barrier.transform.localRotation.eulerAngles;
     }
 
     // Update is called once per frame
@@ -38,17 +42,38 @@ public class ButtonMovement : MonoBehaviour
 
     void AnimateBarrier()
     {
-        
+        OpenBarrier();
+        /*
+        if(isOpen)
+        {
+            CloseBarrier();
+        }
+         */
     }
 
-    void BarrierRotate()
+    void OpenBarrier()
     {
+        UnityEngine.Debug.Log("girdi");
+        UnityEngine.Quaternion endRotation = UnityEngine.Quaternion.Euler(new UnityEngine.Vector3(0, 0, startRotation.z + barrierRotationAmount));
 
+        barrier.transform.localRotation = UnityEngine.Quaternion.Slerp(barrier.transform.localRotation, endRotation, barrierSpeed * Time.deltaTime);
+        if(barrierRotationAmount >= barrier.transform.rotation.z) 
+        {
+            isOpen = true;
+        }
     }
 
-    void BarrierMove()
+    void CloseBarrier()
     {
+        UnityEngine.Debug.Log("girdiClose");
+        UnityEngine.Quaternion endRotation = UnityEngine.Quaternion.Euler(new UnityEngine.Vector3(0, 0, 0));
 
+        barrier.transform.rotation = UnityEngine.Quaternion.Slerp(barrier.transform.rotation, endRotation, barrierSpeed * Time.deltaTime);
+        UnityEngine.Debug.Log("girdiClose");
+        if(endRotation == barrier.transform.rotation) 
+        {
+            isOpen = false;
+        }
     }
 
     void AnimateButton()
