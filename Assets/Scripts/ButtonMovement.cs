@@ -12,9 +12,8 @@ public class ButtonMovement : MonoBehaviour
     private bool isPressed = false;
     private bool isUp = true;
 
-    public GameObject fence;
-    private float fenceTargetYPosition = 5.1f;
-
+    public GameObject barrier;
+    private float barrierTargetYPosition = 5.1f;
 
     // Start is called before the first frame update
     void Start()
@@ -40,6 +39,16 @@ public class ButtonMovement : MonoBehaviour
     void AnimateBarrier()
     {
         
+    }
+
+    void BarrierRotate()
+    {
+
+    }
+
+    void BarrierMove()
+    {
+
     }
 
     void AnimateButton()
