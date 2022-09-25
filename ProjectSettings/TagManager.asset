@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Left Grid
   - Right Grid
+  - Car
+  - Line
   layers:
   - Default
   - TransparentFX
