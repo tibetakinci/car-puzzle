@@ -435,12 +435,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  curve:
-    serializedVersion: 2
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
 --- !u!1 &812485214
 GameObject:
   m_ObjectHideFlags: 0
@@ -1522,7 +1516,7 @@ GameObject:
   - component: {fileID: 1069055817745877919}
   - component: {fileID: 6294731734661826008}
   - component: {fileID: 6294731734661826010}
-  - component: {fileID: 6294731734661826009}
+  - component: {fileID: 6294731734661826011}
   m_Layer: 0
   m_Name: ChamferCyl001
   m_TagString: Untagged
@@ -1883,7 +1877,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 487459383716929961}
-  m_LocalRotation: {x: 0.00000009976814, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 38.746452, y: -2.2036085, z: -66.99174}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2149,31 +2143,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ad7b6ce9111b46428af06cc0bc4b401, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
-  curve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
+  speed: 1000
 --- !u!23 &5775308183177449771
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2340,9 +2310,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e59c35b9d1c3142feb37d04439b0cef8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonAcceleration: 10
---- !u!136 &6294731733167104489
-CapsuleCollider:
+  buttonSpeed: 10
+  barrier: {fileID: 487459383716929961}
+  barrierSpeed: 100
+--- !u!135 &6294731733167104489
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -2351,9 +2323,8 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 11.414909
-  m_Height: 22.829832
-  m_Direction: 1
+  serializedVersion: 2
+  m_Radius: 11.414916
   m_Center: {x: 0, y: 0.000030825708, z: 5.169531}
 --- !u!23 &6294731734523385766
 MeshRenderer:
@@ -2408,7 +2379,7 @@ BoxCollider:
   m_GameObject: {fileID: 487459383716929961}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 31.059961, y: 4.7872357, z: 6.059688}
   m_Center: {x: -13.327806, y: 0.042388797, z: 3.0298362}
@@ -2454,20 +2425,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &6294731734661826009
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 487459383846925271}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 11.414909
-  m_Height: 22.829832
-  m_Direction: 1
-  m_Center: {x: 0.0000019073486, y: 0.000030825708, z: 5.169531}
 --- !u!114 &6294731734661826010
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2480,7 +2437,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e59c35b9d1c3142feb37d04439b0cef8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonAcceleration: 10
+  buttonSpeed: 10
+  barrier: {fileID: 1176476624567987235}
+  barrierSpeed: 100
+--- !u!135 &6294731734661826011
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 487459383846925271}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 11.414916
+  m_Center: {x: 0.0000019073486, y: 0.000030825708, z: 5.169531}
 --- !u!1 &6306253060606695228
 GameObject:
   m_ObjectHideFlags: 0
@@ -2515,7 +2487,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1176476624567987235}
-  m_LocalRotation: {x: 0.00000008146034, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0.0000000817345, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -22.29723, y: -2.2036085, z: -66.99174}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
