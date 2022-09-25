@@ -435,7 +435,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ad7b6ce9111b46428af06cc0bc4b401, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 20
 --- !u!1 &637715569
 GameObject:
   m_ObjectHideFlags: 0
@@ -530,7 +530,6 @@ GameObject:
   m_Component:
   - component: {fileID: 812485215}
   - component: {fileID: 812485216}
-  - component: {fileID: 812485217}
   m_Layer: 0
   m_Name: Grid7
   m_TagString: Left Grid
@@ -605,19 +604,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!65 &812485217
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 812485214}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0, y: 0, z: 0}
-  m_Center: {x: -0.0000009661552, y: -1.0424119, z: -0.0000004742256}
 --- !u!1 &844298491
 GameObject:
   m_ObjectHideFlags: 0
@@ -1234,7 +1220,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1345673418}
   - component: {fileID: 1345673419}
-  - component: {fileID: 1345673420}
   m_Layer: 0
   m_Name: Grid1
   m_TagString: Left Grid
@@ -1309,19 +1294,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!65 &1345673420
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1345673417}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0, y: 0, z: 0}
-  m_Center: {x: -0.0000009536743, y: -0.0000038146973, z: -0.0000012516975}
 --- !u!1 &1378832972
 GameObject:
   m_ObjectHideFlags: 0
@@ -2341,7 +2313,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ad7b6ce9111b46428af06cc0bc4b401, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1000
+  speed: 20
 --- !u!23 &5775308183177449771
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2665,7 +2637,7 @@ GameObject:
   - component: {fileID: 8161801861971593170}
   m_Layer: 0
   m_Name: Line003
-  m_TagString: Untagged
+  m_TagString: Line
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

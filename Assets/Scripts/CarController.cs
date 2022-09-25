@@ -22,16 +22,21 @@ public class CarController : MonoBehaviour
         MoveCar();
     }
 
+    void FixedUpdate()
+    {
+        
+    }
+
     void MoveCar()
     {
-        //GoForward();
-        MoveToPosition();
+        GoForward();
+        //StartCoroutine(MoveToPosition());
     }
 
     void GoForward()
     {
-        Vector3 direction = Vector3.forward;
-        //rb.velocity = Vector3.Lerp(transform.position, direction, speed*Time.deltaTime);
+        Vector3 direction = Vector3.back;
+        rb.velocity = direction * speed;
 
         //Vector3 move = Vector3.Lerp(transform.position, transform.position+direction, 0.1f) * speed * Time.deltaTime;
         //rb.MovePosition(transform.position + direction*speed);
@@ -61,11 +66,12 @@ public class CarController : MonoBehaviour
         }
         else if(collision.gameObject.tag == "Line")
         {
+            UnityEngine.Debug.Log("Line");
             rb.velocity = new UnityEngine.Vector3(0f, 0f, 0f);
         }
         else if(collision.gameObject.tag == "Left Grid" || collision.gameObject.tag == "Right Grid")
         {
-            UnityEngine.Debug.Log("DETECTED");
+            UnityEngine.Debug.Log("Grid");
         }
     }
 

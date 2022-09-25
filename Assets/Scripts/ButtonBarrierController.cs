@@ -32,7 +32,7 @@ public class ButtonBarrierController : MonoBehaviour
         {
             if(isClicked)
                 AnimateButton();
-            AnimateBarrier();
+            StartCoroutine(AnimateBarrier());
         }
     }
 
@@ -42,7 +42,7 @@ public class ButtonBarrierController : MonoBehaviour
         isClicked = true;
     }
 
-    void AnimateBarrier()
+    private IEnumerator AnimateBarrier()
     {
         if(!isOpen)
         {
@@ -51,6 +51,7 @@ public class ButtonBarrierController : MonoBehaviour
         if(barrierRotationAmount >= barrier.transform.rotation.eulerAngles.z)
         {
             isOpen = true;
+            yield return new WaitForSeconds(0.3f);
         }
         if(isOpen)
         {
