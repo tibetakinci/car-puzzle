@@ -9,22 +9,28 @@ public class CarController : MonoBehaviour
     private Rigidbody rb;
     private GameObject tick;
 
+    public Transform gridTransform;
+    private float t = 0.1f;
+
     // Start is called before the first frame update
     void Start()
     {
         rb = this.GetComponent<Rigidbody>();
         tick = this.transform.Find("tick").gameObject;
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        MoveCar();
+        //MoveCar();
     }
 
     void FixedUpdate()
     {
-        
+        Vector3 startPosition = transform.position;
+        Vector3 endPosition = gridTransform.position;
+        transform.position = Vector3.MoveTowards(startPosition, Vector3.Lerp(startPosition, endPosition, t), speed * Time.deltaTime);
     }
 
     void MoveCar()

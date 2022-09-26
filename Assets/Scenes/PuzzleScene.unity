@@ -435,7 +435,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ad7b6ce9111b46428af06cc0bc4b401, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 20
+  speed: 30
+  gridTransform: {fileID: 916130840}
 --- !u!1 &637715569
 GameObject:
   m_ObjectHideFlags: 0
@@ -1194,7 +1195,7 @@ RectTransform:
   m_GameObject: {fileID: 1298930506}
   m_LocalRotation: {x: -0, y: -0.7071068, z: 0.7071068, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.4545454, y: 0.45454547, z: 0.45454547}
+  m_LocalScale: {x: 0.45454544, y: 0.45454544, z: 0.45454544}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1345673418}
@@ -1203,11 +1204,11 @@ RectTransform:
   - {fileID: 812485215}
   - {fileID: 1378832973}
   m_Father: {fileID: 543450653182368248}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -5.9090905, y: -8.636365}
+  m_AnchoredPosition: {x: -5.909089, y: -8.636362}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1345673417
@@ -1411,7 +1412,7 @@ RectTransform:
   - {fileID: 88731339}
   - {fileID: 1091620467}
   m_Father: {fileID: 543450653182368248}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1766,8 +1767,8 @@ Transform:
   - {fileID: 3486378520782196473}
   - {fileID: 6566670142895580523}
   - {fileID: 7510385978156859196}
-  - {fileID: 1298930507}
   - {fileID: 1451758937}
+  - {fileID: 1298930507}
   m_Father: {fileID: 1142489768}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 90, y: 90, z: -90}
@@ -2313,7 +2314,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ad7b6ce9111b46428af06cc0bc4b401, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 20
+  speed: 40
+  gridTransform: {fileID: 1345673418}
 --- !u!23 &5775308183177449771
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2549,7 +2551,7 @@ BoxCollider:
   m_GameObject: {fileID: 487459383716929961}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 31.059961, y: 4.7872357, z: 6.059688}
   m_Center: {x: -13.327806, y: 0.042388797, z: 3.0298362}
@@ -2803,7 +2805,7 @@ BoxCollider:
   m_GameObject: {fileID: 1176476624567987235}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 31.059961, y: 4.7872357, z: 6.059688}
   m_Center: {x: -13.327793, y: 0.042388797, z: 3.0298362}
