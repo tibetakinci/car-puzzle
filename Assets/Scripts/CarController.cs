@@ -8,59 +8,51 @@ public class CarController : MonoBehaviour
     public float speed = 10.0f;
     private Rigidbody rb;
     private GameObject tick;
+    public GameObject button;
 
     public Transform gridTransform;
     private float t = 0.1f;
+    private ButtonBarrierController bbController;
+    private bool isOpen;
+    private bool firstPosition = false;
+    private Vector3 firstLeftCarPosition = new Vector3(-12.8f, 4.4f, 31.5f);
+    private Vector3 firstRightCarPosition = new Vector3(13.2f, 4.4f, 31.5f);
 
     // Start is called before the first frame update
     void Start()
     {
         rb = this.GetComponent<Rigidbody>();
         tick = this.transform.Find("tick").gameObject;
-        
+        if(this.transform.position == firstLeftCarPosition)
+        {
+            firstPosition = true;
+        }
+
+        if(this.transform.position == firstRightCarPosition)
+        {
+            firstPosition = true;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        //MoveCar();
+        isOpen = bbController.isOpen;
+        if(isOpen)
+        {
+            MoveTowards(gridTransform.position);
+        }
     }
 
-    void FixedUpdate()
+    void Awake()
+    {
+        bbController = button.GetComponent<ButtonBarrierController>();
+    }
+
+    void MoveTowards(Vector3 endPosition)
     {
         Vector3 startPosition = transform.position;
-        Vector3 endPosition = gridTransform.position;
         transform.position = Vector3.MoveTowards(startPosition, Vector3.Lerp(startPosition, endPosition, t), speed * Time.deltaTime);
-    }
-
-    void MoveCar()
-    {
-        GoForward();
-        //StartCoroutine(MoveToPosition());
-    }
-
-    void GoForward()
-    {
-        Vector3 direction = Vector3.back;
-        rb.velocity = direction * speed;
-
-        //Vector3 move = Vector3.Lerp(transform.position, transform.position+direction, 0.1f) * speed * Time.deltaTime;
-        //rb.MovePosition(transform.position + direction*speed);
-    }
-
-    private IEnumerator MoveToPosition()
-    {
-        float t = 0;
-        Vector3 start = transform.position;
-        Vector3 direction = Vector3.forward;
- 
-        while (t <= 1)
-        {
-            t += Time.fixedDeltaTime / speed;
-            rb.MovePosition(Vector3.Lerp (start, start-direction, t));
-
-            yield return null;
-        }
     }
 
     void OnCollisionEnter(Collision collision)

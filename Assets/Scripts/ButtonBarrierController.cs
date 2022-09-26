@@ -16,8 +16,8 @@ public class ButtonBarrierController : MonoBehaviour
     public GameObject barrier;
     public float barrierSpeed;
     private float barrierRotationAmount = 270f;
-    private float closedBarrierRotationAmount = 359f;
-    private bool isOpen = false;
+    private float closedBarrierRotationAmount = 358f;
+    public bool isOpen = false;
 
     // Start is called before the first frame update
     void Start()
@@ -51,7 +51,7 @@ public class ButtonBarrierController : MonoBehaviour
         if(barrierRotationAmount >= barrier.transform.rotation.eulerAngles.z)
         {
             isOpen = true;
-            yield return new WaitForSeconds(0.3f);
+            yield return new WaitForSeconds(0.5f);
         }
         if(isOpen)
         {
