@@ -317,7 +317,7 @@ GameObject:
   - component: {fileID: 460379532}
   m_Layer: 0
   m_Name: Right Car
-  m_TagString: Car
+  m_TagString: Right Car
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -386,7 +386,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 460379526}
   m_LocalRotation: {x: -0, y: 0.7071068, z: 0.7071068, w: 0}
-  m_LocalPosition: {x: 13.214558, y: 4.404848, z: 31.442259}
+  m_LocalPosition: {x: 13.2, y: 4.4, z: 31.5}
   m_LocalScale: {x: 0.12000002, y: 0.12000002, z: 0.12000002}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -435,10 +435,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ad7b6ce9111b46428af06cc0bc4b401, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 30
+  speed: 40
   button: {fileID: 487459383846925271}
   gridTransform: {fileID: 916130840}
   isOpen: 0
+  firstPosition: 0
+  isMoving: 0
 --- !u!1 &578174287
 GameObject:
   m_ObjectHideFlags: 0
@@ -455,11 +457,11 @@ GameObject:
   - component: {fileID: 578174288}
   m_Layer: 0
   m_Name: Left Car (1)
-  m_TagString: Car
+  m_TagString: Left Car
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &578174288
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -467,15 +469,17 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 578174287}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0ad7b6ce9111b46428af06cc0bc4b401, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0
+  speed: 40
   button: {fileID: 487459385573382124}
   gridTransform: {fileID: 1345673418}
   isOpen: 0
+  firstPosition: 0
+  isMoving: 0
 --- !u!65 &578174289
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -569,7 +573,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 578174287}
   m_LocalRotation: {x: -0, y: 0.7071068, z: 0.7071068, w: 0}
-  m_LocalPosition: {x: -12.795048, y: 4.4, z: 42}
+  m_LocalPosition: {x: -12.8, y: 4.4, z: 52.1}
   m_LocalScale: {x: 0.12000002, y: 0.12000002, z: 0.12000002}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -929,11 +933,11 @@ GameObject:
   - component: {fileID: 888547787}
   m_Layer: 0
   m_Name: Right Car (1)
-  m_TagString: Car
+  m_TagString: Right Car
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &888547787
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -941,15 +945,17 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 888547786}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0ad7b6ce9111b46428af06cc0bc4b401, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0
+  speed: 40
   button: {fileID: 487459383846925271}
   gridTransform: {fileID: 916130840}
   isOpen: 0
+  firstPosition: 0
+  isMoving: 0
 --- !u!65 &888547788
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1043,7 +1049,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 888547786}
   m_LocalRotation: {x: -0, y: 0.7071068, z: 0.7071068, w: 0}
-  m_LocalPosition: {x: 13.214558, y: 4.4, z: 42}
+  m_LocalPosition: {x: 13.214558, y: 4.4, z: 51.8}
   m_LocalScale: {x: 0.12000002, y: 0.12000002, z: 0.12000002}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2239,7 +2245,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3837783332964581823}
   m_LocalRotation: {x: -0, y: 0.7071068, z: 0.7071068, w: 0}
-  m_LocalPosition: {x: -12.795048, y: 4.404848, z: 31.442259}
+  m_LocalPosition: {x: -12.8, y: 4.4, z: 31.5}
   m_LocalScale: {x: 0.12000002, y: 0.12000002, z: 0.12000002}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2552,7 +2558,7 @@ GameObject:
   - component: {fileID: 5631376382273448137}
   m_Layer: 0
   m_Name: Left Car
-  m_TagString: Car
+  m_TagString: Left Car
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2781,8 +2787,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 40
   button: {fileID: 487459385573382124}
-  gridTransform: {fileID: 1345673418}
+  gridTransform: {fileID: 2096008113}
   isOpen: 0
+  firstPosition: 0
+  isMoving: 0
 --- !u!23 &5775308183177449771
 MeshRenderer:
   m_ObjectHideFlags: 0

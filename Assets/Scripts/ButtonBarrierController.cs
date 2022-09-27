@@ -16,7 +16,7 @@ public class ButtonBarrierController : MonoBehaviour
     public GameObject barrier;
     public float barrierSpeed;
     private float barrierRotationAmount = 270f;
-    private float closedBarrierRotationAmount = 358f;
+    private float closedBarrierRotationAmount = 359f;
     public bool isOpen = false;
 
     // Start is called before the first frame update
