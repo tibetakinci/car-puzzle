@@ -8,8 +8,9 @@ public class CarInstantiateController : MonoBehaviour
     private int TotalLeftCarAmount = 5;
     private int RightCarCount = 1;
     private int LeftCarCount = 1;
+    private Quaternion rotation = new Quaternion(0f, 180f, 180f, 0f);
 
-    public void CarInstantiate(Object obj, Vector3 transform, Quaternion rotation, string carType)
+    public void CarInstantiate(Object obj, Vector3 transform, string carType)
     {
         if(CheckCarCount(carType))
             Instantiate(obj, transform, rotation);

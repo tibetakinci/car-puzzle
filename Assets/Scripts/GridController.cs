@@ -39,8 +39,6 @@ public class GridController : MonoBehaviour
         LeftCarGrids.Enqueue(ParentGrid.transform.GetChild(1).gameObject);
         LeftCarGrids.Enqueue(ParentGrid.transform.GetChild(2).gameObject);
         LeftCarGrids.Enqueue(ParentGrid.transform.GetChild(3).gameObject);
-        LeftCarGrids.Enqueue(ParentGrid.transform.GetChild(4).gameObject);
-        LeftCarGrids.Enqueue(ParentGrid.transform.GetChild(5).gameObject);
         LeftCarGrids.Enqueue(ParentGrid.transform.GetChild(7).gameObject);
         LeftCarGrids.Enqueue(ParentGrid.transform.GetChild(8).gameObject);
         LeftCarGrids.Enqueue(ParentGrid.transform.GetChild(6).gameObject);
@@ -52,6 +50,7 @@ public class GridController : MonoBehaviour
         GameObject grid;
         do {
             grid = RightCarGrids.Dequeue();
+            UnityEngine.Debug.Log(grid);
         } while(CheckParkedGrids(grid));
         parkedGrids.Add(grid);
         return grid;
@@ -73,7 +72,7 @@ public class GridController : MonoBehaviour
         return parkedGrids.Contains(grid);
     }
 
-    private bool CheckCorrectGrid(GameObject car, GameObject grid)
+    public bool CheckPark(GameObject car, GameObject grid)
     {
         return (car.gameObject.tag == "LeftCar" && grid.gameObject.tag == "LeftGrid") || (car.gameObject.tag == "RightCar" && grid.gameObject.tag == "RightGrid");
     }

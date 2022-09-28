@@ -10,14 +10,12 @@ public class CarController : MonoBehaviour
     private GameObject tick;
     public GameObject button;
 
-    public Transform gridTransform;
     private float t = 0.1f;
     private ButtonBarrierController bbController;
-    private Vector3 firstLeftCarPosition = new Vector3(-12.8f, 4.4f, 31.5f);
-    private Vector3 secondLeftCarPosition = new Vector3(-12.8f, 4.4f, 42f);
-    private Vector3 firstRightCarPosition = new Vector3(13.2f, 4.4f, 31.5f);
-    private Vector3 secondRightCarPosition = new Vector3(13.2f, 4.4f, 42f);
-    private Quaternion secondCarRotation = new Quaternion(0f, 270f, 180f, 0f);
+    private Vector3 firstLeftCarPosition = new Vector3(-12.8f, 5f, 31.5f);
+    private Vector3 secondLeftCarPosition = new Vector3(-12.8f, 5f, 42f);
+    private Vector3 firstRightCarPosition = new Vector3(13.2f, 5f, 31.5f);
+    private Vector3 secondRightCarPosition = new Vector3(13.2f, 5f, 42f);
     public bool isOpen;
     public bool isFirst;
     public bool isMoving;
@@ -26,6 +24,7 @@ public class CarController : MonoBehaviour
 
     private CarInstantiateController carInstantiateController;
     private GridController gridController;
+    private GameObject gridObject;
 
     // Start is called before the first frame update
     void Start()
@@ -38,6 +37,7 @@ public class CarController : MonoBehaviour
         isParked = false;
         carInstantiateController = Camera.main.GetComponent<CarInstantiateController>();
         gridController = Camera.main.GetComponent<GridController>();
+        gridObject = null;
     }
 
     // Update is called once per frame
@@ -48,17 +48,25 @@ public class CarController : MonoBehaviour
         {
             if (isFirst && !isParked)
             {
-                GameObject gridObject = new GameObject();
-                if(this.gameObject.tag == "LeftCar")
-                    gridObject = gridController.GetLeftGrid();
-                else if(this.gameObject.tag == "RightCar")
-                    gridObject = gridController.GetRightGrid();
+                if(!gridObject)
+                {
+                    if(this.gameObject.tag == "LeftCar")
+                        gridObject = gridController.GetLeftGrid();
+                    else if(this.gameObject.tag == "RightCar")
+                        gridObject = gridController.GetRightGrid();
+                }
                 
                 MoveTowards(gridObject.transform.position);
                 isMoving = CheckPosition(gridObject.transform.position);
                 
                 if(!isMoving)
+                {
                     isParked = true;
+                    if(gridController.CheckPark(this.gameObject, gridObject))
+                        tick.SetActive(true);
+                    else
+                        ReloadScene();
+                }
             }
             else
             {
@@ -83,11 +91,11 @@ public class CarController : MonoBehaviour
                 isInstantiate = true;
                 if(this.gameObject.tag == "LeftCar")
                 {
-                    carInstantiateController.CarInstantiate(this, secondLeftCarPosition, secondCarRotation, "Left");
+                    carInstantiateController.CarInstantiate(this, secondLeftCarPosition, "Left");
                 }
                 else if(this.gameObject.tag == "RightCar")
                 { 
-                    carInstantiateController.CarInstantiate(this, secondRightCarPosition, secondCarRotation, "Right");
+                    carInstantiateController.CarInstantiate(this, secondRightCarPosition, "Right");
                 }
             }
         }
@@ -118,8 +126,7 @@ public class CarController : MonoBehaviour
     {
         if (CheckCarCollision(collision))
         {
-            Scene scene = SceneManager.GetActiveScene();
-            SceneManager.LoadScene(scene.name);
+            ReloadScene();
         }
         else if(collision.gameObject.tag == "Line")
         {
@@ -130,5 +137,11 @@ public class CarController : MonoBehaviour
     bool CheckCarCollision(Collision collision)
     {
         return (this.gameObject.tag == "LeftCar" && collision.gameObject.tag == "RightCar") || (this.gameObject.tag == "RightCar" && collision.gameObject.tag == "LeftCar");
+    }
+
+    private void ReloadScene()
+    {
+        Scene scene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(scene.name);
     }
 }
