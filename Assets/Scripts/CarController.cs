@@ -22,6 +22,10 @@ public class CarController : MonoBehaviour
     public bool isFirst;
     public bool isMoving;
     private bool isInstantiate;
+    public bool isParked;
+
+    private CarInstantiateController carInstantiateController;
+    private GridController gridController;
 
     // Start is called before the first frame update
     void Start()
@@ -31,6 +35,9 @@ public class CarController : MonoBehaviour
         isInstantiate = false;
         isFirst = false;
         isMoving = false;
+        isParked = false;
+        carInstantiateController = Camera.main.GetComponent<CarInstantiateController>();
+        gridController = Camera.main.GetComponent<GridController>();
     }
 
     // Update is called once per frame
@@ -39,31 +46,31 @@ public class CarController : MonoBehaviour
         isOpen = bbController.isOpen;
         if(isOpen || isMoving)
         {
-            if (isFirst)
+            if (isFirst && !isParked)
             {
-                MoveTowards(gridTransform.position);
-                isMoving = CheckPosition(gridTransform.position);
+                GameObject gridObject = new GameObject();
+                if(this.gameObject.tag == "LeftCar")
+                    gridObject = gridController.GetLeftGrid();
+                else if(this.gameObject.tag == "RightCar")
+                    gridObject = gridController.GetRightGrid();
+                
+                MoveTowards(gridObject.transform.position);
+                isMoving = CheckPosition(gridObject.transform.position);
+                
+                if(!isMoving)
+                    isParked = true;
             }
             else
             {
-                if(this.gameObject.tag == "Left Car")
+                if(this.gameObject.tag == "LeftCar" && !isParked)
                 {
                     MoveTowards(firstLeftCarPosition);
                     isMoving = CheckPosition(firstLeftCarPosition);
-                    /*
-                    if(!isOpen && CheckFirstPosition(firstLeftCarPosition))
-                        isFirst = true;
-                        //Instantiate(this.gameObject, secondLeftCarPosition, secondCarRotation);
-                        */
                 }
-                else if(this.gameObject.tag == "Right Car")
+                else if(this.gameObject.tag == "RightCar" && !isParked)
                 {
                     MoveTowards(firstRightCarPosition);
                     isMoving = CheckPosition(firstRightCarPosition);
-                    /*
-                    if(!isMoving)
-                        Instantiate(this, secondRightCarPosition, secondCarRotation);
-                         */
                 }
             }
         }
@@ -74,13 +81,13 @@ public class CarController : MonoBehaviour
             if(!isInstantiate)
             {
                 isInstantiate = true;
-                if(this.gameObject.tag == "Left Car")
+                if(this.gameObject.tag == "LeftCar")
                 {
-                    Instantiate(this.gameObject, secondLeftCarPosition, secondCarRotation);
+                    carInstantiateController.CarInstantiate(this, secondLeftCarPosition, secondCarRotation, "Left");
                 }
-                else if(this.gameObject.tag == "Right Car")
+                else if(this.gameObject.tag == "RightCar")
                 { 
-                    Instantiate(this, secondRightCarPosition, secondCarRotation);
+                    carInstantiateController.CarInstantiate(this, secondRightCarPosition, secondCarRotation, "Right");
                 }
             }
         }
@@ -122,11 +129,6 @@ public class CarController : MonoBehaviour
 
     bool CheckCarCollision(Collision collision)
     {
-        return (this.gameObject.tag == "Left Car" && collision.gameObject.tag == "Right Car") || (this.gameObject.tag == "Right Car" && collision.gameObject.tag == "Left Car");
-    }
-
-    void CheckGrid()
-    {
-        
+        return (this.gameObject.tag == "LeftCar" && collision.gameObject.tag == "RightCar") || (this.gameObject.tag == "RightCar" && collision.gameObject.tag == "LeftCar");
     }
 }

@@ -4,11 +4,11 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Left Grid
-  - Right Grid
   - Line
-  - Left Car
-  - Right Car
+  - LeftGrid
+  - RightGrid
+  - LeftCar
+  - RightCar
   layers:
   - Default
   - TransparentFX
